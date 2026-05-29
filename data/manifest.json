@@ -1,0 +1,160 @@
+{
+  "samples": [
+    {
+      "source_audio_name": "103585.wav",
+      "source_prompt": "Rain pouring on a hard surface as a vehicle drives by while water splashes in the background.",
+      "source_prompt_zh": "雨水倾泻在硬表面上，车辆驶过，背景有水花声",
+      "target_prompt": "Rain pouring on a hard surface as a train passes by on tracks while water splashes in the background.",
+      "target_prompt_zh": "雨水倾泻在硬表面上，火车沿轨道驶过，背景有水花声",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "106468.wav",
+      "source_prompt": "Ducks quacking and birds tweeting as a crowd of people talk while a rooster crows in the background.",
+      "source_prompt_zh": "鸭子呱呱叫，鸟儿啾啾鸣叫，背景中一群人在交谈，公鸡在叫。",
+      "target_prompt": "Ducks quacking and birds tweeting as children laugh while a rooster crows in the background.",
+      "target_prompt_zh": "鸭子呱呱叫，鸟儿啾啾鸣叫，背景中孩子们在笑，公鸡在叫。",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "105843.wav",
+      "source_prompt": "A vehicle is running followed by the horn honking.",
+      "source_prompt_zh": "车辆在运转，随后喇叭鸣响",
+      "target_prompt": "A motorcycle engine revs and accelerates, followed by the horn honking.",
+      "target_prompt_zh": "摩托车发动机轰鸣加速，随后喇叭鸣响",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "106690.wav",
+      "source_prompt": "A woman talking followed by a bird whistling then a person whistling.",
+      "source_prompt_zh": "一名女性说话，随后鸟儿吹口哨，再随后有人吹口哨",
+      "target_prompt": "A man laughing followed by a bird whistling then a person whistling.",
+      "target_prompt_zh": "一名男子笑着，随后鸟儿吹口哨，再随后有人吹口哨",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "106827.wav",
+      "source_prompt": "A man speaks followed by a child crying and then a woman speaking.",
+      "source_prompt_zh": "男子说话后接孩子哭泣 然后女人说话",
+      "target_prompt": "A man speaks followed by a toddler giggling and babbling and then a woman speaking.",
+      "target_prompt_zh": "男子说话后接幼儿咯咯笑和咿呀学语 然后女人说话",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "105790.wav",
+      "source_prompt": "Cats meowing and then wind.",
+      "source_prompt_zh": "猫咪喵喵叫，然后起风。",
+      "target_prompt": "Cats meowing and then a violent thunderstorm.",
+      "target_prompt_zh": "猫咪喵喵叫，然后暴风雨来袭。",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "104667.wav",
+      "source_prompt": "An adult female is speaking in a quiet environment.",
+      "source_prompt_zh": "一名成年女性在安静环境中说话",
+      "target_prompt": "An adult female is speaking urgently amidst the chatter of a crowded cafe and the clatter of dishes.",
+      "target_prompt_zh": "一名成年女性在拥挤咖啡馆的喧闹和餐具碰撞声中急促说话",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "104058.wav",
+      "source_prompt": "An insect buzzing as hollow wood clanks twice followed by a person gulping and a frog croaking proceeded by another insect buzzing and guitar music begins playing.",
+      "source_prompt_zh": "昆虫嗡嗡作响 空木头敲击两下 随后有人吞咽和青蛙呱呱叫 接着又有昆虫嗡嗡作响并开始播放吉他音乐",
+      "target_prompt": "An insect buzzing as hollow wood clanks twice followed by a person gulping and a frog croaking proceeded by another insect buzzing and a soft, slow piano melody begins playing.",
+      "target_prompt_zh": "昆虫嗡嗡作响 空木头敲击两下 随后有人吞咽和青蛙呱呱叫 接着又有昆虫嗡嗡作响并开始播放轻柔缓慢的钢琴旋律",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "104514.wav",
+      "source_prompt": "A woman speaks while a crowd talks and chuckles.",
+      "source_prompt_zh": "一名女性说话，背景有人群交谈和轻笑",
+      "target_prompt": "A woman speaks over the distant roar of crashing ocean waves.",
+      "target_prompt_zh": "一名女性在远处海浪拍岸的轰鸣声上方说话",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "103348.wav",
+      "source_prompt": "A child talking then a man speaking with bird sounds in the background.",
+      "source_prompt_zh": "儿童说话后接男子说话 背景有鸟鸣",
+      "target_prompt": "A child talking then a woman speaking with bird sounds in the background.",
+      "target_prompt_zh": "儿童说话后接女子说话 背景有鸟鸣",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "103982.wav",
+      "source_prompt": "A man talking followed by a faucet running.",
+      "source_prompt_zh": "男子说话后接水龙头流水",
+      "target_prompt": "A man talking followed by a shower spray running.",
+      "target_prompt_zh": "男子说话后接淋浴喷头流水",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    },
+    {
+      "source_audio_name": "107252.wav",
+      "source_prompt": "A truck engine running followed by a truck horn honking.",
+      "source_prompt_zh": "卡车发动机运转，随后卡车喇叭鸣响",
+      "target_prompt": "A truck engine running followed by a train horn honking.",
+      "target_prompt_zh": "卡车发动机运转，随后火车汽笛鸣响",
+      "methods": [
+        "SDEdit",
+        "DDIM-inv",
+        "DDPM-inv",
+        "DirectAudioEdit"
+      ]
+    }
+  ]
+}

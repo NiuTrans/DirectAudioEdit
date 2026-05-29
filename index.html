@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>DirectAudioEdit</title>
+  <script src="./static/tailwind.js"></script>
+  <script src="./static/vue.global.js"></script>
+  <script src="./static/flowbite.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+      }
+      a[href^="http"] {
+        @apply text-indigo-600;
+      }
+      a:hover {
+        @apply text-indigo-800 underline;
+      }
+    }
+
+    @layer components {
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        padding: 8px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0;
+        border-radius: 8px;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      audio {
+        @apply w-full;
+        height: 28px;
+      }
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {}
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white">
+  <div id="app">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-20 top-0 start-0 border-b border-gray-200 bg-white">
+      <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto px-4 py-3">
+        <a href="#home" class="text-base font-semibold text-gray-800">DirectAudioEdit</a>
+        <button data-collapse-toggle="navbar-default" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
+          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <li><a href="#home" class="block py-2 px-3 text-gray-600 rounded md:hover:text-black md:p-0 transition-colors">Home</a></li>
+            <li><a href="#abstract" class="block py-2 px-3 text-gray-600 rounded md:hover:text-black md:p-0 transition-colors">Abstract</a></li>
+            <li><a href="#results" class="block py-2 px-3 text-gray-600 rounded md:hover:text-black md:p-0 transition-colors">Results</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="max-w-screen-xl mx-auto px-4 pt-28 pb-10" id="home">
+      <h1 class="text-3xl font-bold text-gray-900 text-center leading-snug">
+        DirectAudioEdit: Inversion-Free Text-Guided Audio Editing via<br class="hidden sm:block">Diffusion Prediction Contrast
+      </h1>
+
+      <div class="flex justify-center gap-3 mt-8">
+        <a href="https://arxiv.org/abs/2606.07356" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:border-gray-400 hover:text-gray-900 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm0 2h7v5h5v11H6V4zm2 8v2h8v-2H8zm0 4v2h5v-2H8z"/></svg>
+          Paper
+        </a>
+        <a href="https://niutrans.github.io/DirectAudioEdit/" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:border-gray-400 hover:text-gray-900 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h2M6 8v8M10 5v14M14 9v6M18 7v10M22 11v2"/></svg>
+          Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Abstract -->
+    <div class="max-w-screen-lg mx-auto px-4 mb-16" id="abstract">
+      <h2 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Abstract</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Text-guided audio editing aims to modify the language-specified acoustic content while preserving edit-irrelevant source components.
+        Existing training-free methods typically rely on inversion-based editing.
+        While inversion-free editing is appealing as it decreases computational overhead and reconstruction errors, it remains largely unexplored for audio editing.
+        The key challenge is to construct a source-to-target editing trajectory through diffusion denoising dynamics.
+        In this paper, we introduce <b><i>DirectAudioEdit</i></b>, the first attempt to develop a training-free and inversion-free method for audio editing.
+        Experiments on music and event-level benchmarks across two backbones show that <b><i>DirectAudioEdit</i></b> reduces macro-averaged FAD and KL by 15.9% and 15.8% compared with DDPM inversion, while achieving up to 64.5% editing speedup.
+      </p>
+    </div>
+
+    <!-- Results -->
+    <div class="max-w-screen-xl mx-auto px-4 mb-16" id="results">
+      <h2 class="text-xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Results</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left min-w-[1000px]">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th scope="col" class="px-1 py-3 font-semibold text-gray-700 w-[12.5%]">Source Audio</th>
+              <th scope="col" class="px-1 py-3 font-semibold text-gray-700 w-[20%]">Prompt</th>
+              <th scope="col" class="px-1 py-3 font-semibold text-gray-700 w-[12.5%]" v-for="method in methods" :key="method">{{ methodLabels[method] || method }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(sample, index) in manifest_samples" :key="index" class="border-b border-gray-100">
+              <td class="px-1 py-3 min-w-[140px]">
+                <play-audio :src="`data/${sample.folderId}/source.wav`"></play-audio>
+              </td>
+              <td class="px-1 py-3">
+                <div class="text-xs text-gray-500">Source:</div>
+                <div class="text-sm mb-1" v-html="diffSource(sample.source_prompt, sample.target_prompt)"></div>
+                <div class="text-xs text-gray-500">Target:</div>
+                <div class="text-sm" v-html="diffTarget(sample.source_prompt, sample.target_prompt)"></div>
+              </td>
+              <td class="px-1 py-3 min-w-[140px]" v-for="method in methods" :key="method">
+                <play-audio :src="`data/${sample.folderId}/${method}.wav`"></play-audio>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const { createApp, ref, onMounted } = Vue
+
+    const PlayAudio = {
+      props: ['src'],
+      template: `
+        <audio controls class="w-full h-8">
+          <source :src="encodeURIComponent(src)" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+      `,
+      methods: {
+        encodeURIComponent: encodeURIComponent
+      }
+    }
+
+    createApp({
+      components: {
+        'play-audio': PlayAudio
+      },
+      setup() {
+
+        const manifest_samples = ref([]);
+        const methods = ref([]);
+
+        const methodLabels = {
+          'DirectAudioEdit': 'DirectAudioEdit',
+          'DDIM-inv': 'DDIM-inv',
+          'DDPM-inv': 'DDPM-inv',
+          'SDEdit': 'SDEdit'
+        }
+
+        function tokenize(s) {
+          return s.match(/\S+\s*/g) || [];
+        }
+
+        function diffSource(source, target) {
+          const srcTokens = tokenize(source);
+          const tgtWords = new Set(target.match(/\S+/g) || []);
+          return srcTokens.map(t => {
+            const word = t.trim();
+            if (word && !tgtWords.has(word)) {
+              return `<span style="color:red;text-decoration:line-through">${escHtml(t)}</span>`;
+            }
+            return escHtml(t);
+          }).join('');
+        }
+
+        function diffTarget(source, target) {
+          const tgtTokens = tokenize(target);
+          const srcWords = new Set(source.match(/\S+/g) || []);
+          return tgtTokens.map(t => {
+            const word = t.trim();
+            if (word && !srcWords.has(word)) {
+              return `<span style="color:green;font-weight:bold">${escHtml(t)}</span>`;
+            }
+            return escHtml(t);
+          }).join('');
+        }
+
+        function escHtml(s) {
+          return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
+        onMounted(() => {
+          fetch('data/manifest.json')
+            .then(res => res.json())
+            .then(data => {
+              manifest_samples.value = data.samples.map(s => ({
+                ...s,
+                folderId: s.source_audio_name.replace('.wav', '')
+              }));
+              if (data.samples.length > 0) {
+                methods.value = data.samples[0].methods || [];
+              }
+            })
+            .catch(err => console.error('Error loading manifest:', err));
+        });
+
+        return {
+          manifest_samples,
+          methods,
+          methodLabels,
+          diffSource,
+          diffTarget
+        }
+      }
+    }).mount('#app')
+  </script>
+
+</body>
+
+</html>
